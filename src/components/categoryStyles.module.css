@@ -1,0 +1,9 @@
+.courseContent {
+    border: 1px solid #d1d7dc;
+    padding: 3.2rem 3rem;
+    width: 100%;
+}
+
+.courseContent p {
+    max-width: 80rem;
+}
