@@ -1,14 +1,28 @@
 import React from 'react'
-import styles from './cardStyles.module.css'
-function Card(props) {
-    const courseData = props.data;
+import styles from './styles/cardStyles.module.css'
+
+
+function CourseName({ title }) {
+    return (
+        <h4 className={styles.courseName}>
+            <a
+                href={`./${title.replace(/ /g, '-')}`}
+            >
+                {title}
+
+            </a>
+        </h4>
+    )
+}
+
+function RatingDescription({ rating, peopleAttend }) {
     const getStarsNode = () => {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
             //make star element as full star is the default
-            if (Math.ceil(courseData.rating) < i)
+            if (Math.ceil(rating) < i)
                 stars.push(<span key={i} className={`material-symbols-outlined ${styles.emptyStar}`}> star </span>)
-            else if (courseData.rating < i)
+            else if (rating < i)
                 stars.push(<span key={i} className='material-symbols-outlined'> star_half </span>);
 
             else
@@ -16,34 +30,39 @@ function Card(props) {
         }
 
         return stars;
-
     }
 
-    const titleID = courseData.title.replace(/ /g, '-');
-
-
     return (
-        <div className={`${styles.course}`}>
-            < img src={courseData.image} alt="course" />
-            <h4 className={styles.courseName}>
-                <a href={`https://www.udemy.com/course/${titleID}`}>
-                    {courseData.title}
-                </a>
-            </h4>
-
-            <span className={styles.utiltiyComment}>{courseData.instructors[0].name}</span>
-
-            <div className={styles.ratingDescription}>
-                <span className={styles.rating}>{courseData.rating.toPrecision(2)}</span>
-                <div className={styles.stars}>{getStarsNode()}</div>
-                <span className={styles.utiltiyComment}>{courseData.people}</span>
-            </div>
-
-            <span className={styles.price}>E£{courseData.price}</span>
-
-            {courseData.bestSeller ? <span className={styles.badge}>Bestseller</span> : <></>}
-        </div >
+        <div className={styles.ratingDescription}>
+            <span className={styles.rating}>{rating.toPrecision(2)}</span>
+            <div className={styles.stars}>{getStarsNode()}</div>
+            <span className={styles.utiltiyComment}>({peopleAttend.toLocaleString()})</span>
+        </div>
     )
 }
 
-export default Card
+function BestSeller({ isBestSeller }) {
+    return isBestSeller && <span className={styles.badge}>Bestseller</span>;
+}
+
+export default function Card({ data }) {
+    return (
+        <div className={`${styles.course}`}>
+
+            {/* course image */}
+            <img src={data.image} alt="course" />
+
+            <CourseName title={data.title} />
+
+            {/* course instructor names */}
+            <span className={styles.utiltiyComment}>{data.instructors[0].name}</span>
+
+            <RatingDescription rating={data.rating} peopleAttend={data.people} />
+
+            {/* course Price */}
+            <span className={styles.price}>E£{data.price}</span>
+
+            <BestSeller isBestSeller={data.bestSeller} />
+        </div >
+    )
+}

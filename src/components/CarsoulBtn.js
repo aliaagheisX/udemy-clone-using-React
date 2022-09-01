@@ -1,11 +1,11 @@
 import React from 'react'
 
-export default function CarsoulBtn(props) {
+export default function CarsoulBtn({ behaviour, btnClickHandel }) {
 
     return (
-        <span className='circle' onClick={() => props.btnClickHandel(props.behaviour)}>
+        <span className='circle' onClick={() => btnClickHandel(behaviour)}>
             <span className='material-symbols-outlined'>
-                {`navigate_${props.behaviour}`}
+                {`navigate_${behaviour}`}
             </span>
         </span>
     )
