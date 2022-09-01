@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react'
 import Carousel from 'react-bootstrap/Carousel';
 import Row from 'react-bootstrap/Row';
 
@@ -7,56 +7,71 @@ import CarsoulBtn from './CarsoulBtn';
 
 import styles from './styles/categoryStyles.module.css';
 
-
-
 function CategoryDescription({ title, header, description }) {
     return (
         <>
             <h3>{header}</h3>
             <p>{description}</p>
-            <a className='btn' href='/'>{`Explore ${title}`}</a>
+            <a className='btn' href='/'>{`Explore ${title.slice(15)}`}</a>
         </>
     )
 }
 
+
 export default function Category({ data }) {
-    const title = data.title.slice(15);
-    const titleID = title.replace(/ /g, '-');
+
+    /* states */
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [displayPrev, setDisplayPrev] = useState(false);
+    const [displayNext, setDisplayNext] = useState(true);
+    /* ref */
+    const rowRef = useRef(0);
 
 
-    const test = (behavior) => {
+    useEffect(() => {
+        rowRef.current.children[currentSlide].scrollIntoView({ behavior: "smooth", block: "center", inline: "start" });
+    });
+
+    const scrollHandeler = (behavior) => {
         /* element getters */
-        const carousel = document.querySelector(`#courses-${titleID} .carousel`);
-        const row = carousel.children[0];
+        const row = rowRef.current;
 
         /* scroll calculation */
-        const step = Math.max(row.offsetWidth - row.children[0].offsetWidth, row.children[0].offsetWidth);
-        let left = row.scrollLeft;
-        left += behavior === 'next' ? +step : -step;
+        const step = Math.round(row.offsetWidth / row.children[0].offsetWidth) - 1 || 1;
 
-        row.scroll({
-            left: (left),
-            behavior: 'smooth'
-        });
+        const curr = behavior === 'next' ?
+            Math.min(currentSlide + step, row.children.length - step - 1) :
+            Math.max(0, currentSlide - step);
+
+
+        /* update states */
+        setCurrentSlide(curr);
+        setDisplayPrev(curr);
+        setDisplayNext((curr !== row.children.length - step - 1));
     }
 
     return (
-        <div className={`myContainer ${styles.courseContent}`} id={`courses-${titleID}`}>
+        <div className={`myContainer ${styles.courseContent}`} >
 
-            <CategoryDescription title={title} description={data.description} header={data.header} />
+            <CategoryDescription title={data.title} description={data.description} header={data.header} />
 
-            <Carousel indicators={false}
-                prevIcon={<CarsoulBtn btnClickHandel={test} behaviour='before' />}
-                nextIcon={<CarsoulBtn btnClickHandel={test} behaviour='next' />}
+            <Carousel
+                indicators={false}
+                prevIcon={<CarsoulBtn display={displayPrev} btnClickHandel={scrollHandeler} behaviour='before' />}
+                nextIcon={<CarsoulBtn display={displayNext} btnClickHandel={scrollHandeler} behaviour='next' />}
             >
-                <Row xs={1} sm={2} md={3} lg={5}>
-                    {
-                        data.courses.map((e) => (
-                            <Card key={e.id} data={e}></Card>
-                        ))
-                    }
-                </Row>
+                <Carousel.Item>
+                    <Row xs={1} sm={2} md={3} lg={5} ref={rowRef}>
+                        {
+                            data.courses.map((e) => (
+                                <Card key={e.id} data={e}></Card>
+                            ))
+                        }
+                    </Row>
+                </Carousel.Item>
             </Carousel>
         </div >
-    )
+    );
 }
+
+
