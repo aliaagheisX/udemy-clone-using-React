@@ -6,13 +6,15 @@ import Card from './Card';
 import CarsoulBtn from './CarsoulBtn';
 
 import styles from './styles/categoryStyles.module.css';
+import Button from './utils/Button';
 
 function CategoryDescription({ title, header, description }) {
     return (
         <>
             <h3>{header}</h3>
             <p>{description}</p>
-            <a className='btn' href='/'>{`Explore ${title.slice(15)}`}</a>
+
+            <Button href='/'>{`Explore ${title.slice(15)}`}</Button>
         </>
     )
 }
@@ -29,7 +31,11 @@ export default function Category({ data }) {
 
 
     useEffect(() => {
-        rowRef.current.children[currentSlide].scrollIntoView({ behavior: "smooth", block: "center", inline: "start" });
+        rowRef.current.children[currentSlide].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "start"
+        });
     });
 
     const scrollHandeler = (behavior) => {
