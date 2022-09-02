@@ -1,0 +1,331 @@
+:root {
+  /* colors */
+  --purple: #401b9c;
+  --light-purple: #5624d0;
+  --dark-grey: #1c1d1f;
+  --light-grey: #ececec;
+  --grey: #6a6f73;
+  --light-blue: #f7f9fa;
+
+  /* font sizes */
+  --xlarge-font: 1.9rem;
+  --large-font: 1.6rem;
+  --medium-font: 1.4rem;
+  --small-font: 1.2rem;
+
+  /* font-weight */
+  --light-weight: 100;
+  --medium-weight: 700;
+  --bold-weight: bolder;
+
+  /* fixed gaps */
+  --medium-gap: 1.6rem;
+  --vertical-pad: 3.2rem;
+
+  /* utilities */
+  --shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+}
+
+
+@font-face {
+  font-family: SuisseWorks;
+  src: url(./fonts/SuisseWorks-Bold-v1.woff2);
+}
+
+@font-face {
+  font-family: Udemy;
+  src: url(./fonts/Udemy-Sans-Regular-v1.woff2);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  padding-top: 6.7rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Udemy;
+  color: var(--dark-grey);
+}
+
+h1,
+h2 {
+  font-family: SuisseWorks;
+  font-size: 3.2rem;
+}
+
+h3 {
+
+  font-size: 2.4rem;
+  font-weight: var(--medium-weight);
+}
+
+h4 {
+  font-weight: var(--medium-weight);
+  line-height: 1.2;
+  letter-spacing: -.1rem;
+  font-size: var(--large-font);
+}
+
+p {
+  font-size: var(--large-font);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover,
+button[type="submit"]:hover {
+  color: var(--purple);
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+section,
+section.container,
+footer {
+  margin-top: 5rem;
+}
+
+button,
+input {
+  background-color: transparent;
+  border: 0px;
+}
+
+button,
+.btn,
+a {
+  cursor: pointer;
+  color: var(--dark-grey);
+}
+
+/* fonts */
+.empty_star {
+  font-variation-settings:
+      'FILL' 0
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+      'FILL' 1,
+      'wght' 700,
+      'GRAD' 0,
+      'opsz' 48
+}
+
+/* tab */
+.tab-content {
+  width: 100%;
+}
+
+/* special texts(spans) */
+.utiltiy-comment {
+  color: var(--grey);
+}
+
+.badge {
+  background-color: #eceb98;
+  color: #3d3c0a;
+  font-size: 1.2rem;
+  font-weight: var(--medium-weight);
+  padding: 0.6rem 0.4rem;
+}
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.2rem;
+  height: 4rem;
+  min-width: 8rem;
+  font-size: var(--medium-font);
+  font-weight: var(--bold-weight);
+  background-color: transparent;
+  border: 1px solid var(--dark-grey);
+  border-radius: 0;
+}
+
+.btn:hover {
+  background-color: var(--light-grey);
+}
+
+.btn.black:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn.sm {
+  min-width: 4rem;
+  font-weight: var(--medium-weight);
+}
+
+.btn.black {
+  background-color: var(--dark-grey);
+  color: white;
+}
+
+/* icons */
+.material-symbols-outlined {
+  font-weight: var(--bold-weight);
+  line-height: inherit;
+  font-size: 2.4rem;
+}
+
+/* hover cards */
+.hover-card {
+  position: relative;
+}
+
+.card-hover-container {
+  width: 25rem;
+  position: absolute;
+  top: 6.7rem;
+  right: 0;
+  display: none;
+}
+
+.card-content {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 0.7rem;
+}
+
+.hover-card:hover .card-hover-container,
+.card-hover-container:hover {
+  display: block;
+}
+
+.shadow,
+.card-content {
+  background-color: white;
+  box-shadow: var(--shadow);
+}
+
+/* hover nav */
+.hover-nav .card-hover-container {
+  left: 0;
+}
+
+.hover-nav .card-hover-container .card-content ul {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 1.2rem 0.7rem;
+}
+
+.hover-nav .card-hover-container .card-content ul li::after {
+  content: "";
+  border: solid var(--dark-grey);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 2px;
+  transform: rotate(-45deg);
+  position: absolute;
+  right: 2.4rem;
+  cursor: pointer;
+}
+
+.hover-nav .card-hover-container .card-content ul li:hover::after {
+  border-color: var(--purple);
+}
+
+/* responsive classes */
+.myContainer {
+  max-width: 134rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  gap: var(--medium-gap);
+  padding: 1rem 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 3.2rem var(--medium-gap);
+  width: 100%;
+}
+
+.grid-container>* {
+  width: 85%;
+}
+
+.grid-container>* img {
+  width: 100%;
+  min-width: 195px;
+  max-width: 240px;
+}
+
+
+
+/*  carsoul */
+.carousel {
+  width: 100%;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  opacity: 1;
+  align-items: flex-start;
+  top: 23%;
+
+}
+
+.carousel-control-next {
+  justify-content: end;
+  right: -1.4rem;
+}
+
+.carousel-control-prev {
+  justify-content: start;
+  left: -1.4rem;
+}
+
+.carousel a .circle span {
+  background-color: var(--dark-grey);
+  color: white;
+}
+
+
+.carousel-inner .row {
+  flex-wrap: nowrap;
+}
+
+
+
+/* circle icons */
+.circle span {
+  background-color: #d1d7dc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle~strong {
+  font-size: var(--large-font);
+  margin-left: 1rem;
+}

@@ -1,0 +1,51 @@
+  
+/* special texts(spans) */
+.utiltiyComment {
+    color: var(--grey);
+}
+    
+.badge {
+    background-color: #eceb98;
+    color: #3d3c0a;
+    font-size: 1.2rem;
+    font-weight: var(--medium-weight);
+    padding: 0.6rem 0.4rem;
+}
+    
+/* courses */
+.course {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+}
+
+.rating,
+.courseName,
+.price {
+    font-weight: var(--bold-weight);
+    font-size: var(--large-font);
+}
+
+.ratingDescription {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.ratingDescription .rating {
+    color: #b4690e;
+}
+
+.emptyStar {
+    font-variation-settings:
+        'FILL' 0
+}
+.stars span {
+    color: #e59819;
+    font-size: var(--medium-font);
+}
+
+.course img {
+    width: 100%;
+}
