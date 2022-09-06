@@ -16,7 +16,6 @@
 .btn:hover {
     background-color: var(--light-grey);
     color: var(--dark-grey);
-    
 }
 
 .btn.black:hover {
@@ -32,4 +31,17 @@
 .btn.black {
     background-color: var(--dark-grey);
     color: white;
+}
+
+.btn.lg {
+    width: 100%;
+}
+.btn.purple {
+    background-color: #a435f0;
+    color: white;
+    border: 0;
+}
+
+.btn.purple:hover {
+    background-color: #8710d8;
 }

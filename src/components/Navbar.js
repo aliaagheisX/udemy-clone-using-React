@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from './utils/Button'
 import { HoverCard } from './utils/Card'
-import './styles/Navbar.css'
+import './Navbar.css'
 
 
 export default function Navbar() {
@@ -9,7 +9,7 @@ export default function Navbar() {
         <nav className="main-nav shadow">
             {/* <!-- logo --> */}
             <a href="/">
-                <img alt="udemy-logo" src="./logo.svg" className="logo" width="100px" />
+                <img alt="udemy-logo" src="./images/logo.svg" className="logo" width="100px" />
             </a>
 
 

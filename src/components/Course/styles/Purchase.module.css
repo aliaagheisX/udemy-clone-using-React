@@ -1,0 +1,48 @@
+.purchase {
+    padding: 2rem;
+    position: absolute;
+}
+
+.purchase * {
+    color: var(--dark-grey);
+}
+
+.purchase .price {
+    font-weight: bolder;
+    color: var(--dark-grey);
+    display: inline-flex;
+    align-items: center;
+}
+.price * {
+    margin: 0 5px;
+}
+
+.price .currPrice {
+}
+
+.purchase .comment {
+    font-size: var(--small-font);
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.purchase ul,
+.purchase li {
+    gap: 1rem;
+}
+.purchase a {
+    color: black;
+    margin: 0.6rem 0;
+}
+
+.links {
+    justify-content: center;
+    padding: 0rem 0;
+    gap: 4rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+}
