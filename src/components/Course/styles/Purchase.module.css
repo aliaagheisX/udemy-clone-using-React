@@ -1,6 +1,6 @@
 .purchase {
     padding: 2rem;
-    position: absolute;
+    z-index: 2000;
 }
 
 .purchase * {
@@ -16,10 +16,6 @@
 .price * {
     margin: 0 5px;
 }
-
-.price .currPrice {
-}
-
 .purchase .comment {
     font-size: var(--small-font);
     text-align: center;

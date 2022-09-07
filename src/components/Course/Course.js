@@ -1,48 +1,142 @@
-import CourseNavbar from './CourseNavbar';
 import React from 'react'
 import CourseHeader from './CourseHeader'
+import CourseNavbar from './CourseNavbar';
 import { DetailedRating } from '../utils/RatingDescription'
-import Navbar from '../Navbar';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
-const Course = ({ details, summary }) => {
-    const ratingDetails = () => (
-        <DetailedRating
-            isBestSeller={summary.bestseller_badge_content}
-            num_subscribers={summary.num_subscribers}
-            rating={summary.rating}
-            num_reviews={summary.num_reviews}
-        />
+import { createContext, useContext } from 'react';
+import Overview from './Overview';
+import CourseContent from './CourseContent';
+import SideContainer from '../SideContainer';
+import SideNav from './SideNav';
+
+
+export const SummaryContext = createContext();
+export const DetailsContext = createContext();
+
+
+export const RatingDetails = () => {
+    const summary = useContext(SummaryContext);
+    return (<DetailedRating
+        isBestSeller={summary.bestseller_badge_content}
+        num_subscribers={summary.num_subscribers}
+        rating={summary.rating}
+        num_reviews={summary.num_reviews}
+    />
     )
+}
+const Course = ({ details, summary }) => {
     return (
-        <>
+        <SummaryContext.Provider value={summary}>
 
-            <Navbar />
-            <CourseNavbar title={summary.title} ratingDetails={ratingDetails} />
-            <CourseHeader summary={summary} ratingDetails={ratingDetails} />
+            <CourseNavbar title={summary.title} />
 
-            <Container className='myContainer' style={{ display: 'block' }}>
-                <Row>
-                    <Col xs={12} lg={8}>
 
-                        <div className='card'>
-                            <Row xs={1} sm={2}>
-                                {
-                                    summary.objectives_summary.map((e, i) => (
-                                        <Col key={i}>{e}</Col>
-                                    ))
-                                }
-                            </Row>
-                        </div>
+            <CourseHeader />
+            <SideNav />
 
-                    </Col>
-                </Row>
-            </Container>
-        </>
+            <SideContainer>
+
+                <Overview />
+
+                <DetailsContext.Provider value={details}>
+                    <CourseContent />
+                </DetailsContext.Provider>
+
+
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore facere magni veniam quod dolorem eum repellendus maiores velit, praesentium minus, rerum impedit odit iste doloribus culpa ratione distinctio quae.</div>
+            </SideContainer>
+        </SummaryContext.Provider>
     )
 }
 
+
+/* 
+function WhatWillLearn({ e, i }) {
+    return (<div className='card'>
+        <h3>What you'll learn</h3>
+        <Row xs={1} sm={2}>
+            {summary.objectives_summary.map((e, i) => <Col key={i}>
+                <span class="material-symbols-outlined">
+                    done
+                </span>
+                <span>
+                    {e}
+                </span>
+            </Col>)}
+        </Row>
+    </div>);
+} */
 
 export default Course;

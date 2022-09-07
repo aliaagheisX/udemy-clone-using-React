@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import styles from './styles/Purchase.module.css'
+
 import Button from '../utils/Button'
 import { Feauters } from '../utils/Feauters';
 import Sponsoring from '../utils/Sponsoring';
+import { SummaryContext } from './Course';
 
 const PurchaseLinks = <ul className={styles.links}>
     <li><a href='/'>Share</a></li>
@@ -12,7 +14,15 @@ const PurchaseLinks = <ul className={styles.links}>
 </ul>;
 
 
-export default function Purchase({ defaultWidth, defaultPosition, discount, price, content_info }) {
+const Purchase = ({ defaultWidth, defaultPosition }) => {
+
+    const {
+        price: {
+            list_price: price,
+            discount_price: discount
+        },
+        content_info,
+    } = useContext(SummaryContext);
 
     const [isSticky, setisSticky] = useState(0);
     const handleScroll = () => {
@@ -24,7 +34,7 @@ export default function Purchase({ defaultWidth, defaultPosition, discount, pric
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    });
+    }, []);
 
     return (
         <div
@@ -54,6 +64,7 @@ export default function Purchase({ defaultWidth, defaultPosition, discount, pric
 
     );
 }
+export default Purchase;
 
 export function PurchaseSummary() {
     return (

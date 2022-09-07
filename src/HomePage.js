@@ -3,6 +3,9 @@ import CoursePage from './CoursePage';
 import WaitingPage from './WaitingPage';
 import Page404 from './Page404';
 import Resource from './Resource';
+import Navbar from './components/Navbar';
+import Header from './components/Home/Header';
+import CategoryContainer from './components/Home/CategoryContainer';
 
 function HomePage() {
   return (
@@ -11,7 +14,14 @@ function HomePage() {
       render={data => {
         if (data.loading) return <WaitingPage />
         if (data.error) return <Page404 />
-        return <CoursePage summary={data.items[0].items[1]} />
+        return (
+          <>
+            <Navbar />
+            {/* <Header />
+            <CategoryContainer data={data.items} /> */}
+            <CoursePage summary={data.items[0].items[0]} />
+          </>
+        )
       }}
     />
   );

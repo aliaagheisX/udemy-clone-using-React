@@ -7,29 +7,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import Purchase from './Purchase';
-
-const CourseHeader = React.memo(({ summary, ratingDetails }) => {
-    const {
-        image_750x422: image,
-        title,
-        headline,
-        visible_instructors: instructors,
-        last_update_date: date,
-        context_info: { category, label },
-        locale: { simple_english_title: language },
-        caption_languages: captions,
-        price: {
-            list_price: price,
-            discount_price: discount
-        },
-        content_info,
-
-    } = summary;
-    const [year, month] = date.split('-')
+import { RatingDetails, SummaryContext } from './Course';
+import { useContext } from 'react';
 
 
-    const video = useRef(null);
-    const [purchase, setPurchase] = useState(<div></div>);
+
+const CourseHeader = React.memo(() => {
+    const video = useRef(<div></div>);
+    const [purchase, setPurchase] = useState(null);
 
     useEffect(() => {
         const defaultPosition = video?.current?.offsetHeight + video?.current?.offsetTop;
@@ -38,9 +23,7 @@ const CourseHeader = React.memo(({ summary, ratingDetails }) => {
             <Purchase video={video}
                 defaultWidth={defaultWidth}
                 defaultPosition={defaultPosition}
-                price={price}
-                discount={discount}
-                content_info={content_info} />
+            />
         ))
     }, [])
 
@@ -54,25 +37,15 @@ const CourseHeader = React.memo(({ summary, ratingDetails }) => {
                 <Row>
 
                     <Col xs={12}>
-                        <TopicMenu category={category} label={label} />
+                        <TopicMenu />
                     </Col>
 
                     <Col lg={{ span: 8, order: 1 }} xs={{ span: 12, order: 2 }}>
-                        <CourseHead
-                            title={title}
-                            headline={headline}
-                            ratingDetails={ratingDetails}
-                            Instructors={Instructors} instructors={instructors}
-                            Updates={Updates}
-                            month={month}
-                            year={year}
-                            language={language}
-                            captions={captions}
-                        />
+                        <CourseHead />
                     </Col>
 
                     <Col lg={{ span: 4, order: 1 }} xs={{ span: 12, order: 1 }}>
-                        <Video image={image} ref={video} />
+                        <Video ref={video} />
 
 
                         {purchase}
@@ -90,17 +63,21 @@ const CourseHeader = React.memo(({ summary, ratingDetails }) => {
 
 
 
-const Video = React.forwardRef(({ image }, ref) => (
-    <a ref={ref} className={styles.video} href='/'>
-        <img src={image} alt="course" />
-        <span className={styles.preview}>Preview this course</span>
-        <span className={`material-symbols-outlined ${styles.circle}`}>
-            play_circle
-        </span>
-    </a>
-))
+const Video = React.forwardRef((props, ref) => {
+    const { image_750x422: image } = useContext(SummaryContext);
+    return (
+        <a ref={ref} className={styles.video} href='/'>
+            <img src={image} alt="course" />
+            <span className={styles.preview}>Preview this course</span>
+            <span className={`material-symbols-outlined ${styles.circle}`}>
+                play_circle
+            </span>
+        </a>
+    )
+})
 
-function Instructors(instructors) {
+function Instructors() {
+    const { visible_instructors: instructors } = useContext(SummaryContext);
     return <span className={styles.instructors}>
         Created by {instructors.map((i, index) => (
             <a key={i.id} href={`#instructor-${index}`}>
@@ -112,7 +89,15 @@ function Instructors(instructors) {
 }
 
 
-function Updates(month, year, language, captions) {
+function Updates() {
+    const {
+        last_update_date: date,
+        locale: { simple_english_title: language },
+        caption_languages: captions,
+
+    } = useContext(SummaryContext);
+    const [year, month] = date.split('-');
+
     return <Row xs={1} md={'auto'} className={styles.updates}>
         <Col>
             <span className="material-symbols-outlined"> new_releases </span>
@@ -131,19 +116,26 @@ function Updates(month, year, language, captions) {
 
 }
 
-const CourseHead = ({ title, headline, ratingDetails, Instructors, instructors, Updates, month, year, language, captions }) => {
-    return (<div className={styles.head}>
-        <h1> {title} </h1>
-        <p>{headline}</p>
+const CourseHead = () => {
+    const {
+        title,
+        headline,
+    } = useContext(SummaryContext);
 
-        <div className={styles.details}>
-            {ratingDetails()}
+    return (
+        <div className={styles.head}>
+            <h1> {title} </h1>
+            <p>{headline}</p>
 
-            {Instructors(instructors)}
+            <div className={styles.details}>
+                <RatingDetails />
 
-            {Updates(month, year, language, captions)}
+                <Instructors />
+
+                <Updates />
+            </div>
         </div>
-    </div>);
+    );
 }
 
 export default CourseHeader;

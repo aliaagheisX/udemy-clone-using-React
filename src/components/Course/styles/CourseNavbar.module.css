@@ -1,11 +1,13 @@
 .courseNav {
     background: var(--dark-grey);
     color: #fff;
-    padding: 0 2.4rem;
+    padding: 1rem 2.4rem;
     box-shadow: 0 -2px 4px rgb(0 0 0 / 8%), 0 -4px 12px rgb(0 0 0 / 16%);
     position: fixed;
     top: 0;
-    zi
+    width: 100%;
+    z-index: 1020;
+    height: 7rem;
 }
 
 .courseNav a {
@@ -14,5 +16,4 @@
 
 .courseNav h3 {
     font-size: var(--large-font);
-    padding: 1rem 0;
 }

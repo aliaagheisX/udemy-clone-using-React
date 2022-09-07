@@ -6,7 +6,7 @@ import CourseCard from './CourseCard'
 import CarsoulBtn from './CarsoulBtn';
 
 import styles from './styles/Category.module.css';
-import Button from './utils/Button';
+import Button from './../utils/Button';
 
 function CategoryDescription({ title, header, description }) {
     return (

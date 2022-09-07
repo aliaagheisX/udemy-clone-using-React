@@ -1,0 +1,23 @@
+.sideNav {
+    position: sticky;
+    top: 7rem;
+    z-index: 1020;
+}
+
+.sideNav ul {
+    gap: 6rem;
+    font-size: var(--medium-font);
+    margin: 0;
+    font-weight: bold;
+}
+
+.sideNav a {
+    color: var(--grey);
+    line-height: 4.2rem;
+    height: 4.2rem;
+}
+
+.sideNav a:hover {
+    color: var(--dark-grey);
+    border-bottom: 3px solid var(--dark-grey);
+}

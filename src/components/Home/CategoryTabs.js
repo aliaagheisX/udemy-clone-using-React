@@ -6,7 +6,7 @@ import styles from './styles/Category.module.css'
 
 
 export default function CategoryTabs({ data }) {
-
+  console.log(data)
   return (
     <Tabs
       transition={false}
