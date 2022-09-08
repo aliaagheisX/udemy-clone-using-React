@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles/Feauters.module.css';
 
-export function Feauters(content_info) {
+export function Feauters({ content_info }) {
     return (
         <div>
             <h4>This course includes:</h4>

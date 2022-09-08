@@ -1,0 +1,20 @@
+.courseHeader {
+    background-color: var(--dark-grey);
+    padding: 3rem 0;
+}
+
+.courseHeader > div {
+    flex-direction: row;
+}
+.courseHeader * {
+    color: white;
+}
+
+.courseHeader a {
+    color: var(--white-purple);
+}
+
+.courseHeader span,
+.courseHeader a {
+    font-size: var(--medium-font);
+}

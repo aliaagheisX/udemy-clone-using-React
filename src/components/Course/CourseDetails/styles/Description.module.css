@@ -1,0 +1,7 @@
+.description pre {
+    font-family: Udemy;
+    white-space: break-spaces;
+    font-size: var(--small-font);
+    word-break: break-word;
+    padding: 2rem 0;
+}

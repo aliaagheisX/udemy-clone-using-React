@@ -5,13 +5,13 @@ import { DetailedRating } from '../utils/RatingDescription'
 
 import { createContext, useContext } from 'react';
 import Overview from './Overview';
-import CourseContent from './CourseContent';
+import CourseContent from './CourseContent/';
 import SideContainer from '../SideContainer';
 import SideNav from './SideNav';
 import CourseDetails from './CourseDetails';
-import Instructors from './Instructors';
-
+import Instructors from './Instructor';
 import Reviews from './Reviews';
+
 export const SummaryContext = createContext();
 export const DetailsContext = createContext();
 
@@ -29,48 +29,28 @@ export const RatingDetails = () => {
 const Course = ({ details, summary }) => {
     return (
         <SummaryContext.Provider value={summary}>
-            <div id='CoursePage'>
-                <CourseNavbar title={summary.title} />
+            <DetailsContext.Provider value={details}>
+                <div id='CoursePage'>
+                    <CourseNavbar title={summary.title} />
 
 
-                <CourseHeader />
-                <SideNav />
+                    <CourseHeader />
+                    <SideNav summary={summary} />
 
-                <SideContainer>
+                    <SideContainer>
 
-                    <Overview />
+                        <Overview />
 
-                    <DetailsContext.Provider value={details}>
                         <CourseContent />
                         <CourseDetails />
                         <Instructors />
                         <Reviews />
-                    </DetailsContext.Provider>
 
-
-
-                </SideContainer>
-            </div>
+                    </SideContainer>
+                </div>
+            </DetailsContext.Provider>
         </SummaryContext.Provider>
     )
 }
-
-
-/* 
-function WhatWillLearn({ e, i }) {
-    return (<div className='card'>
-        <h3>What you'll learn</h3>
-        <Row xs={1} sm={2}>
-            {summary.objectives_summary.map((e, i) => <Col key={i}>
-                <span class="material-symbols-outlined">
-                    done
-                </span>
-                <span>
-                    {e}
-                </span>
-            </Col>)}
-        </Row>
-    </div>);
-} */
 
 export default Course;

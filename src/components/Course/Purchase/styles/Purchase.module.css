@@ -1,4 +1,7 @@
 .purchase {
+    position: absolute;
+    /* TODO */
+    width: var(--side);
     padding: 2rem;
     z-index: 2000;
 }
@@ -7,16 +10,7 @@
     color: var(--dark-grey);
 }
 
-.purchase .price {
-    font-weight: bolder;
-    color: var(--dark-grey);
-    display: inline-flex;
-    align-items: center;
-}
-.price * {
-    margin: 0 5px;
-}
-.purchase .comment {
+.comment {
     font-size: var(--small-font);
     text-align: center;
     display: inline-block;

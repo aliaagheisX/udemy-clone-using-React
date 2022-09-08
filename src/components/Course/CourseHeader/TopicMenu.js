@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './styles/TopicMenu.module.css'
-import { SummaryContext } from ".";
+import { SummaryContext } from "..";
 import { useContext } from "react";
 export default function TopicMenu() {
     const { context_info: { category, label } } = useContext(SummaryContext);

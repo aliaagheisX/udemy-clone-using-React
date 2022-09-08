@@ -1,0 +1,15 @@
+.links {
+    flex-direction: column;
+    align-items: start;
+    margin: 0;
+}
+.links li {
+    gap: 1.6rem;
+}
+.links span {
+    font-size: var(--medium-font);
+}
+
+.links span:first-child {
+    font-size: var(--small-font);
+}

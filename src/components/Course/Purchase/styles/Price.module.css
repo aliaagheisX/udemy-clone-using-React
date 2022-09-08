@@ -1,0 +1,9 @@
+.price * {
+    margin: 0 5px;
+}
+.price {
+    font-weight: bolder;
+    color: var(--dark-grey);
+    display: inline-flex;
+    align-items: center;
+}
