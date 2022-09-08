@@ -1,0 +1,53 @@
+/* layout */
+.Footer {
+    background: var(--dark-grey);
+    padding: 4rem 0 1rem 0;
+}
+.linksLanguage {
+    padding-bottom: 7rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.linksLanguage ul {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+.languageContainer {
+    flex-grow: 5;
+    display: inline-flex;
+    flex-direction: row-reverse;
+}
+
+/* language button */
+.languageContainer a {
+    border-color: white;
+    padding: 0 3rem 0 1rem;
+}
+
+.languageContainer a span {
+    color: white;
+    font-weight: var(--light-weight);
+    font-size: var(--large-font);
+    margin-right: 1rem;
+}
+
+/* links */
+.linksLanguage ul li a {
+    font-size: var(--medium-font);
+    padding: 0.4rem 0;
+    color: white;
+}
+
+.linksLanguage ul li a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.copyright span {
+    color: white;
+    font-size: 1.2rem;
+}
