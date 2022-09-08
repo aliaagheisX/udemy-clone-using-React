@@ -5,7 +5,7 @@ export default function Form() {
     const [searchParams, setSearchParams] = useSearchParams();
 
     return (
-        <form>
+        <form className={styles.form}>
             <input
                 placeholder='Search reviews'
                 type='search'
@@ -16,6 +16,7 @@ export default function Form() {
                     if (rating) setSearchParams({ rating });
                     else setSearchParams({});
                 }}
+                className={styles.searchBar}
             />
             <select
                 value={searchParams.get("rating") || ""}
@@ -24,6 +25,8 @@ export default function Form() {
                     if (rating) setSearchParams({ rating });
                     else setSearchParams({});
                 }}
+                className={styles.select}
+
             >
                 <option value="0">All Ratings</option>
                 <option value="5">Five stars</option>

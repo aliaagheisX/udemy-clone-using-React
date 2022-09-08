@@ -1,0 +1,34 @@
+.res {
+    border-bottom: 1px solid #d1d7dc;
+    padding: 2rem 0;
+}
+
+.cont {
+    margin-left: 6rem;
+    margin-top: 1rem;
+}
+
+.cont ul {
+    justify-content: start;
+    padding: 0;
+    gap: 1.6rem;
+}
+
+.cont ul a {
+    font-size: var(--medium-font);
+    text-decoration: underline;
+}
+.thumb span {
+    border: 1px solid black;
+    --size: 3rem;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 100%;
+    line-height: var(--size);
+    text-align: center;
+    font-size: var(--large-font);
+}
+
+.desc {
+    font-size: var(--medium-font);
+}
