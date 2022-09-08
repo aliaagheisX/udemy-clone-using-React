@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { SummaryContext } from './Course'
+import { SummaryContext } from '.'
 export default function Overview() {
 
     const { objectives_summary } = useContext(SummaryContext);

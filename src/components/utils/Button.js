@@ -1,12 +1,13 @@
 import React from 'react'
-import styles from './Button.module.css'
+import styles from './styles/Button.module.css'
+import { Link } from 'react-router-dom'
 export default function Button({ href, size = "normal", color = "white", children }) {
     return (
-        <a
+        <Link
             className={`${styles.btn} ${styles[size]} ${styles[color]}`}
-            href={href}
+            to={href}
         >
             {children}
-        </a>
+        </Link>
     )
 }

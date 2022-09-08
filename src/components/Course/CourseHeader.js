@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styles from './styles/CourseHeader.module.css'
 
-import TopicMenu from '../utils/TopicMenu';
+import TopicMenu from './TopicMenu';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import Purchase from './Purchase';
-import { RatingDetails, SummaryContext } from './Course';
+import { RatingDetails, SummaryContext } from '.';
 import { useContext } from 'react';
 
 

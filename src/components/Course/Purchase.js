@@ -5,7 +5,7 @@ import styles from './styles/Purchase.module.css'
 import Button from '../utils/Button'
 import { Feauters } from '../utils/Feauters';
 import Sponsoring from '../utils/Sponsoring';
-import { SummaryContext } from './Course';
+import { SummaryContext } from '.';
 
 const PurchaseLinks = <ul className={styles.links}>
     <li><a href='/'>Share</a></li>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext } from 'react'
-import { DetailsContext } from './Course'
+import { DetailsContext } from '.'
 
 export default function CourseDetails() {
     const { details: {
@@ -10,9 +10,22 @@ export default function CourseDetails() {
     } } = useContext(DetailsContext);
     return (
         <section>
-            <ul className="requirements">
-                {Requirements.map()}
-            </ul>
+            <div className="requirements">
+                <h3>Requirements</h3>
+                <ul>
+                    {Requirements.map((e, index) => <li key={index}>{e}</li>)}
+                </ul>
+            </div>
+            <div className="description">
+                <h3>Description</h3>
+                <pre>{description}</pre>
+            </div>
+            <div className="for-who">
+                <h3>Who this course is for:</h3>
+                <ul>
+                    {for_who.split('\n').map((e, index) => <li key={index}>{e}</li>)}
+                </ul>
+            </div>
         </section>
     )
 }

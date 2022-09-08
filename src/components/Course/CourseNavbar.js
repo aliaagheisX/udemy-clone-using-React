@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles/CourseNavbar.module.css"
-import { RatingDetails } from "./Course"
+import { RatingDetails } from "."
 
 export default function CourseNavbar({ title }) {
     return <nav className={styles.courseNav}>

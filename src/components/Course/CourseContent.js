@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
-import { DetailsContext } from './Course';
+import { DetailsContext } from '.';
 
 const VideoDetails = ({ id, description }) => {
     const [open, setOpen] = useState(false);

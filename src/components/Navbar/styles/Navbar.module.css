@@ -1,0 +1,52 @@
+.mainNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 2.4rem;
+    gap: 1rem;
+    position: relative;
+    z-index: 1080;
+    box-shadow: var(--shadow);
+    background: white;
+}
+
+.menuContent {
+    font-size: var(--medium-font);
+    flex-grow: 1;
+    align-items: center;
+    display: inline-flex;
+}
+
+.menuContent > * {
+    height: 6.7rem;
+    align-items: center;
+    display: inline-flex;
+}
+
+.mainNav ul {
+    padding-left: 20px;
+    justify-content: space-around;
+    gap: 3rem 0.7rem;
+}
+
+.mainNav ul li {
+    height: 100%;
+}
+
+/* responsive navigation bar*/
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .mainNav {
+        justify-content: space-between;
+        flex-direction: row-reverse;
+    }
+
+    .mainNav > * {
+        flex-grow: 0;
+    }
+
+    .mainNav .menuContent {
+        display: none;
+    }
+}

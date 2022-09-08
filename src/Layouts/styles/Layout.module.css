@@ -1,0 +1,15 @@
+.Layout {
+    margin: auto;
+    text-align: center;
+}
+
+.Layout * {
+    display: block;
+    margin: auto;
+}
+.Layout a {
+    font-size: var(--xlarge-font);
+    text-decoration: underline;
+    color: var(--purple);
+    padding: 1rem 0;
+}

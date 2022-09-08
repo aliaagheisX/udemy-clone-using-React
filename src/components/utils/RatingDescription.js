@@ -1,6 +1,6 @@
 import React from 'react'
 import BestSeller from './BestSeller';
-import styles from './RatingDescription.module.css'
+import styles from './styles/RatingDescription.module.css'
 
 export default function BreifRating({ rating, num_reviews }) {
     return (

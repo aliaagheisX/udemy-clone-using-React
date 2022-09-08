@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Sponsoring.module.css"
+import styles from "./styles/Sponsoring.module.css"
 import Button from "./Button";
 
 export default function Sponsoring() {

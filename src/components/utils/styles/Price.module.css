@@ -1,0 +1,11 @@
+.price {
+    font-weight: var(--bold-weight);
+    font-size: var(--large-font);
+}
+.cancelledPrice {
+    color: var(--grey);
+    text-decoration: line-through;
+    margin-left: 5px;
+    font-weight: 100;
+    font-size: var(--medium-font);
+}

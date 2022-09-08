@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Feauters.module.css';
+import styles from './styles/Feauters.module.css';
 
 export function Feauters(content_info) {
     return (

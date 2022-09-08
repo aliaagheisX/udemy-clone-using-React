@@ -7,17 +7,22 @@ export default function Resource({ path, render }) {
 
     useEffect(() => {
         fetch(path)
-            .then(res => res.json())
+            .then((res) => {
+                if (res.ok) return res.json();
+                throw Error;
+            })
             .then(
                 (result) => {
                     setLoadeding(false);
                     setItems(result);
                 },
                 (error) => {
+                    console.log(error)
                     setLoadeding(false);
                     setError(error);
                 }
             )
+
     }, [])
 
 

@@ -8,8 +8,8 @@ export default function SideNav() {
                 <ul>
                     <li><a href='#overview'>Overview</a></li>
                     <li><a href='#curriculum'>Curriculum</a></li>
-                    <li><a href='#Instructor'>Instructor</a></li>
-                    <li><a href='#Reviews'>Reviews</a></li>
+                    <li><a href='#instructor'>Instructor</a></li>
+                    <li><a href='#reviews'>Reviews</a></li>
                 </ul>
             </SideContainer>
         </nav>

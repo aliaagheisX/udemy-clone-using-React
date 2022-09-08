@@ -1,9 +1,0 @@
-.topicMenu {
-    display: flex;
-}
-
-.topicMenu * {
-    color: var(--white-purple);
-    font-weight: var(--bold-weight);
-    margin: 2px;
-}
