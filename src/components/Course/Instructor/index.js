@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { SummaryContext } from '..'
 
 import styles from './styles/index.module.css'
+import ShowMore from '../../ShowMore';
 
 export default function Instructors() {
     const { visible_instructors: instructors } = useContext(SummaryContext);
@@ -20,22 +21,23 @@ export default function Instructors() {
                     id,
                     ...data
                 }) => (
-                    <div key={id} className={styles.ins}>
-                        <div>
-                            <a href={url} className={styles.title}>{display_name}</a>
-                            <span className={styles.jop}>{job_title}</span>
+                    <ShowMore key={id} >
+                        <div className={styles.ins}>
+                            <div>
+                                <a href={url} className={styles.title}>{display_name}</a>
+                                <span className={styles.jop}>{job_title}</span>
+                            </div>
+                            <div className={styles.cont}>
+                                <img src={image} alt='instructor' />
+                                <Links data={data} />
+                            </div>
+                            <div>
+                                <p className={styles.desc}>{description}</p>
+                            </div>
                         </div>
-                        <div className={styles.cont}>
-                            <img src={image} alt='instructor' />
-                            <Links data={data} />
-                        </div>
-                        <div>
-                            <p className={styles.desc}>{description}</p>
-                            <button>Show more</button>
-                        </div>
-                    </div>
+                    </ShowMore>
                 ))
             }
-        </section>
+        </section >
     )
 }
