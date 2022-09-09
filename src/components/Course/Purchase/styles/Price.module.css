@@ -2,8 +2,40 @@
     margin: 0 5px;
 }
 .price {
-    font-weight: bolder;
     color: var(--dark-grey);
     display: inline-flex;
     align-items: center;
+}
+
+.currPrice {
+    font-weight: bolder;
+    font-size: 3.2rem;
+}
+
+.prevPrice {
+    font-size: 1.6rem;
+    color: var(--grey);
+    text-decoration: line-through;
+}
+
+.precent {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.hours {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hours * {
+    color: #b32d0f;
+    font-size: var(--large-font);
+}
+
+@media only screen and (max-width: 992px) {
+    .hours * {
+        color: #fcaea0;
+    }
 }

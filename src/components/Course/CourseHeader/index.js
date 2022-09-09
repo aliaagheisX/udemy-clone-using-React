@@ -4,7 +4,8 @@ import TopicMenu from './TopicMenu';
 
 import CourseOverview from './CourseOverview'
 import Video from '../Video';
-import Purchase, { PurchaseSummary } from '../Purchase/Purchase';
+import Purchase from '../Purchase/Purchase';
+import PurchaseSummary from '../Purchase/PurchaseSummary';
 
 
 export default function CourseHeader() {
