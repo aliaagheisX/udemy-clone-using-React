@@ -12,7 +12,7 @@ export default function CategoryContent({ data }) {
 
 
     return (
-        <div className={`myContainer ${styles.courseContent}`} >
+        <div className={styles.courseContent} >
 
             <CategoryDescription title={title} description={description} header={header} />
 

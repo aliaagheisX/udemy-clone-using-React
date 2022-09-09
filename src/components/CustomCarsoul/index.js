@@ -6,46 +6,44 @@ import './CustomCarsoul.css'
 export default function CustomCarsoul({ children }) {
 
     /* states */
-    const [currentSlide, setCurrentSlide] = useState(0);
     const [displayPrev, setDisplayPrev] = useState(false);
     const [displayNext, setDisplayNext] = useState(true);
+    const [leftPos, setLeftPos] = useState(0);
     /* row ref to control sliding */
     const rowRef = useRef(0);
+
     useEffect(() => {
-        if (rowRef.current.children.length > currentSlide && currentSlide >= 0) {
-            rowRef.current.children[currentSlide].scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-                inline: "start"
-            });
-        }
-    }, [currentSlide]);
+        rowRef.current.scroll({
+            left: (leftPos),
+            behavior: 'smooth'
+        });
+    }, [leftPos]);
 
     useEffect(() => {
         scrollHandeler('prev');
-
     }, [children])
 
     const scrollHandeler = (behavior) => {
         /* element getters */
-        const row = rowRef.current;
+        const row = rowRef?.current;
+        const appearWidth = row?.offsetWidth;
+        const childWidth = row?.children[0]?.offsetWidth;
+        const childrenNum = row?.children?.length;
+
+        const maxLeft = childrenNum * childWidth;
+
+        const step = Math.max(appearWidth - childWidth, childWidth);
+        let left = row?.scrollLeft;
+        left += behavior === 'next' ? +step : -step;
 
 
-        /* scroll calculation */
-        const appearChild = Math.round(row.offsetWidth / row?.children[0]?.offsetWidth) || 0;
-        const step = Math.max(appearChild - 1, 1);
-        const maxSlide = row.children.length - step - 1;
+        left = Math.max(left, 0);
+        left = Math.min(left, maxLeft);
 
+        setLeftPos(left);
+        setDisplayPrev(left - step > 0);
+        setDisplayNext(left + step < maxLeft);
 
-        const curr = behavior === 'next' ?
-            Math.min(currentSlide + step, maxSlide) :
-            Math.max(0, currentSlide - step);
-
-        /* update states */
-        setCurrentSlide(curr);
-        setDisplayPrev(curr);
-
-        setDisplayNext((curr < maxSlide) && (maxSlide > 0) && (curr >= 0));
     }
 
 

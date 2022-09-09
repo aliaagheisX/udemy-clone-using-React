@@ -2,6 +2,9 @@
     width: 100%;
 }
 
+.carousel-inner .row {
+    overflow: hidden;
+}
 .carousel-control-next,
 .carousel-control-prev {
     opacity: 1;

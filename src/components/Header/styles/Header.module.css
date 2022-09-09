@@ -4,6 +4,7 @@
     flex-wrap: wrap-reverse;
     flex-direction: row;
     align-items: flex-end;
+    max-width: 114rem !important;
 }
 
 .headerImg {
