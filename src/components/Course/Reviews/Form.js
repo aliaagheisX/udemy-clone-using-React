@@ -1,34 +1,25 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom';
 import styles from './styles/Form.module.css'
+import Searchbar from '../../Searchbar'
+import useNavigateSearch from '../../../useNavigateSearch';
 export default function Form() {
     const [searchParams, setSearchParams] = useSearchParams();
-
+    const navigate = useNavigateSearch();
     return (
-        <form className={styles.form}>
-            <input
-                placeholder='Search reviews'
-                type='search'
-                name='search'
-                value={searchParams.get("review") || ""}
-                onChange={(e) => {
-                    let rating = e.target.value;
-                    if (rating) setSearchParams({ rating });
-                    else setSearchParams({});
-                }}
-                className={styles.searchBar}
-            />
+        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+
+            <Searchbar name='review' />
             <select
                 value={searchParams.get("rating") || ""}
                 onChange={(e) => {
-                    let rating = e.target.value;
-                    if (rating) setSearchParams({ rating });
-                    else setSearchParams({});
+                    const value = e.target.value;
+                    navigate({ key: 'rating', value: value });
                 }}
                 className={styles.select}
-
             >
-                <option value="0">All Ratings</option>
+
+                <option value="">All Ratings</option>
                 <option value="5">Five stars</option>
                 <option value="4">Four stars</option>
                 <option value="3">Three stars</option>

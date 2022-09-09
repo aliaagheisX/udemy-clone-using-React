@@ -3,7 +3,7 @@
     gap: 1.6rem;
     margin: 2rem 0;
 }
-.searchBar {
+.form input {
     padding: 0.5rem;
     border: 2px solid var(--dark-grey);
     font-size: var(--medium-font);

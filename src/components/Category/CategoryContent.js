@@ -18,10 +18,10 @@ export default function CategoryContent({ data }) {
 
             <CustomCarsoul>
                 {
-                    items.filter((c) => {
-                        let filter = searchParams.get("filter");
+                    items.filter(({ title }) => {
+                        const filter = searchParams.get("filter");
                         if (!filter) return true;
-                        const name = c.title.toLowerCase();
+                        const name = title.toLowerCase();
                         return name.includes(filter.toLowerCase());
                     }).map((e) => (
                         <CourseCard key={e.id} data={e} />
