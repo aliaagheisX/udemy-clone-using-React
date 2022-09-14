@@ -1,6 +1,8 @@
 import React from 'react'
 import BestSeller from './BestSeller';
 import styles from './styles/RatingDescription.module.css'
+import PropTypes from 'prop-types'
+
 
 export default function BreifRating({ rating, num_reviews }) {
     return (
@@ -11,6 +13,11 @@ export default function BreifRating({ rating, num_reviews }) {
 
         </div>
     )
+}
+
+BreifRating.propTypes = {
+    rating: PropTypes.number.isRequired,
+    num_reviews: PropTypes.number.isRequired
 }
 
 export function DetailedRating({ rating, num_reviews, num_subscribers, isBestSeller }) {
@@ -24,6 +31,12 @@ export function DetailedRating({ rating, num_reviews, num_subscribers, isBestSel
     )
 }
 
+DetailedRating.propTypes = {
+    rating: PropTypes.number.isRequired,
+    num_reviews: PropTypes.number.isRequired,
+    num_subscribers: PropTypes.number.isRequired,
+    isBestSeller: PropTypes.any.isRequired,
+}
 
 export function Stars({ rating }) {
     const getStarsNode = () => {
@@ -47,6 +60,11 @@ export function Stars({ rating }) {
     )
 
 }
+
+Stars.propTypes = {
+    rating: PropTypes.number.isRequired
+}
+
 
 function RatingDescription({ rating }) {
 

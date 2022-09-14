@@ -27,13 +27,15 @@ export default function CustomCarsoul({ children }) {
         /* element getters */
         const row = rowRef?.current;
         const appearWidth = row?.offsetWidth;
+        row.parentNode.style.display = 'block';
         const childWidth = row?.children[0]?.offsetWidth;
         const childrenNum = row?.children?.length;
 
+        /* calculations */
         const maxLeft = childrenNum * childWidth;
-
         const step = Math.max(appearWidth - childWidth, childWidth);
-        let left = row?.scrollLeft;
+
+        let left = leftPos;
         left += behavior === 'next' ? +step : -step;
 
 
@@ -41,9 +43,8 @@ export default function CustomCarsoul({ children }) {
         left = Math.min(left, maxLeft);
 
         setLeftPos(left);
-        setDisplayPrev(left - step > 0);
+        setDisplayPrev(left > 0);
         setDisplayNext(left + step < maxLeft);
-
     }
 
 

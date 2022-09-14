@@ -2,6 +2,7 @@ import React from 'react'
 import { useSearchParams } from 'react-router-dom';
 
 import useNavigateSearch from '../useNavigateSearch'
+import PropTypes from 'prop-types'
 
 export default function Searchbar({ path = false, name }) {
 
@@ -19,4 +20,9 @@ export default function Searchbar({ path = false, name }) {
             }}
         />
     )
+}
+
+Searchbar.propTypes = {
+    path: false || PropTypes.string,
+    name: PropTypes.string.isRequired
 }

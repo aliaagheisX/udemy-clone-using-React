@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import styles from './styles/StickyCard.module.css'
+import PropTypes from 'prop-types'
 
 
 export default function StickyCard({ children }) {
@@ -29,4 +30,8 @@ export default function StickyCard({ children }) {
             {children}
         </div>
     )
+}
+
+StickyCard.propTypes = {
+    children: PropTypes.any.isRequired
 }

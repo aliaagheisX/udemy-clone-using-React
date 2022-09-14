@@ -3,6 +3,7 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import PropTypes from 'prop-types'
 
 
 export default function SideContainer({ children }) {
@@ -20,4 +21,7 @@ export default function SideContainer({ children }) {
             </Row>
         </Container>
     )
+}
+SideContainer.propTypes = {
+    children: PropTypes.any.isRequired
 }

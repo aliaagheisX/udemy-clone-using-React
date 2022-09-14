@@ -23,7 +23,7 @@ export default function ShowMore({ children, maxHeight = '320px' }) {
                     <span className="material-symbols-outlined">{`expand_${isActive()}`}
                     </span>
 
-                    <button>Show {isActive()}</button>
+                    <span>Show {isActive()}</span>
                 </div>
             </button>
         </div >

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 export default function Resource({ path, render }) {
     const [error, setError] = useState(null);
@@ -28,4 +29,9 @@ export default function Resource({ path, render }) {
 
 
     return render({ loading, items, error });
+}
+
+Resource.propTypes = {
+    path: PropTypes.string.isRequired,
+    render: PropTypes.func.isRequired
 }
