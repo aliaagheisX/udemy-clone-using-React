@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './styles/CourseHeader.module.css'
 
 import TopicMenu from './TopicMenu';

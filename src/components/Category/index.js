@@ -1,9 +1,11 @@
 import React from 'react'
 import CategoryTabs from './CategoryTabs'
 import styles from './styles/Category.module.css'
-import Resource from '../../Resource'
-import Waiting from '../../Layouts/Waiting'
-import Error from '../../Layouts/Error'
+import Resource from '../../Resource';
+
+const server = require('../../config.json');
+
+
 export default function Category({ data }) {
     return (
         <section className={`${styles.coursesSection} myContainer`}>
@@ -13,12 +15,8 @@ export default function Category({ data }) {
 
 
             <Resource
-                path="http://localhost:4000/summary"
-                render={data => {
-                    if (data.loading) return <Waiting />
-                    if (data.error) return <Error />
-                    return <CategoryTabs data={data.items} />
-                }}
+                path={server.categories}
+                render={data => <CategoryTabs data={data.items} />}
             />
 
         </section>

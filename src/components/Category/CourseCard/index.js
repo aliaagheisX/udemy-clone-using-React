@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './styles/CourseCard.module.css'
+import styles from './CourseCard.module.css'
 import Instructors from './Instructors';
 import CourseName from './CourseName';
 import RatingDescription from '../../utils/RatingDescription';
@@ -31,7 +31,7 @@ export default function CourseCard({ data }) {
             <RatingDescription rating={rating} num_reviews={num_reviews} />
 
             {/* course Price */}
-            <Price discount={discount?.price_string} price={price?.price_string} />
+            <Price discount={discount?.price_string || ''} price={price?.price_string} />
 
             <BestSeller isBestSeller={data.bestseller_badge_content} />
         </div >

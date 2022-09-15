@@ -15,8 +15,14 @@ export default function CategoryTabs({ data }) {
 
       {
         data.map((cat) => (
-          <Tab key={cat.id} eventKey={cat.id} title={cat.title} tabClassName={styles.tabBtn}>
+          <Tab
+            key={cat.id}
+            eventKey={cat.id}
+            title={cat.title}
+            tabClassName={styles.tabBtn}>
+
             <CategoryContent data={cat} />
+
           </Tab>
         ))
       }

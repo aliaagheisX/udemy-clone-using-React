@@ -1,66 +1,67 @@
-import React, { useState, useRef, useEffect } from 'react'
-import Carousel from 'react-bootstrap/Carousel';
-import Row from 'react-bootstrap/Row';
-import CarsoulBtn from './CarsoulBtn';
-import './CustomCarsoul.css'
-export default function CustomCarsoul({ children }) {
-
-    /* states */
-    const [displayPrev, setDisplayPrev] = useState(false);
-    const [displayNext, setDisplayNext] = useState(true);
-    const [leftPos, setLeftPos] = useState(0);
-    /* row ref to control sliding */
-    const rowRef = useRef(0);
-
-    useEffect(() => {
-        rowRef.current.scroll({
-            left: (leftPos),
-            behavior: 'smooth'
-        });
-    }, [leftPos]);
-
-    useEffect(() => {
-        scrollHandeler('prev');
-    }, [children])
-
-    const scrollHandeler = (behavior) => {
-        /* element getters */
-        const row = rowRef?.current;
-        const appearWidth = row?.offsetWidth;
-        row.parentNode.style.display = 'block';
-        const childWidth = row?.children[0]?.offsetWidth;
-        const childrenNum = row?.children?.length;
-
-        /* calculations */
-        const maxLeft = childrenNum * childWidth;
-        const step = Math.max(appearWidth - childWidth, childWidth);
-
-        let left = leftPos;
-        left += behavior === 'next' ? +step : -step;
+import React, { useState } from 'react'
+import './CustomCarsoul.module.css'
 
 
-        left = Math.max(left, 0);
-        left = Math.min(left, maxLeft);
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
 
-        setLeftPos(left);
-        setDisplayPrev(left > 0);
-        setDisplayNext(left + step < maxLeft);
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import CarsoulPrevBtn from './CarsoulPrevBtn';
+import CarsoulNextBtn from './CarsoulNextBtn';
+import { CoursesLoadingContext } from '../Category/CoursesContainer';
+import { useContext } from 'react';
+
+
+export default function CustomCarsoul({ items }) {
+    const { nextLink } = useContext(CoursesLoadingContext);
+    const [displayNext, setDisplayNext] = useState(nextLink);
+    const [displayPrev, setDisplayPrev] = useState(0);
+
+    const handelDisplayButtons = (swiper) => {
+        setDisplayNext(nextLink || !swiper.isEnd)
+        setDisplayPrev(!swiper.isBeginning)
     }
-
-
     return (
-        <Carousel
-            indicators={false}
-            prevIcon={<CarsoulBtn display={displayPrev} btnClickHandel={scrollHandeler} behaviour='before' />}
-            nextIcon={<CarsoulBtn display={displayNext} btnClickHandel={scrollHandeler} behaviour='next' />}
+        <Swiper
+            breakpoints={{
+                0: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    spaceBetween: 10,
+
+                },
+                658: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 1,
+                    spaceBetween: 20,
+                },
+                940: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 2,
+                    spaceBetween: 40,
+                },
+                1090: {
+                    slidesPerView: 5,
+                    slidesPerGroup: 4,
+                    spaceBetween: 20,
+                },
+            }}
+
+            modules={[Navigation]}
+            speed={500}
+            onSlideChange={handelDisplayButtons}
+            className='mySwiper'
         >
-            <Carousel.Item>
-                <Row xs={1} sm={2} md={3} lg={5} ref={rowRef}>
+            <CarsoulNextBtn display={displayNext} />
+            <CarsoulPrevBtn display={displayPrev} />
 
-                    {children}
-
-                </Row>
-            </Carousel.Item>
-        </Carousel>
+            {items.map((e, i) => (
+                <SwiperSlide key={i}>
+                    {e}
+                </SwiperSlide>
+            ))}
+        </Swiper>
     )
 }

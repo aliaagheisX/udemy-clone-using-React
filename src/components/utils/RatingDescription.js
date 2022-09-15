@@ -35,7 +35,7 @@ DetailedRating.propTypes = {
     rating: PropTypes.number.isRequired,
     num_reviews: PropTypes.number.isRequired,
     num_subscribers: PropTypes.number.isRequired,
-    isBestSeller: PropTypes.any.isRequired,
+    isBestSeller: PropTypes.any,
 }
 
 export function Stars({ rating }) {

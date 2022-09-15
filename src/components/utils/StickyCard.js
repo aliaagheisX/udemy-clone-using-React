@@ -8,10 +8,7 @@ export default function StickyCard({ children }) {
     const [isSticky, setIsSticky] = useState(0);
 
     const scollHandeler = () => {
-        if (window.pageYOffset > stickyCardRef?.current?.offsetTop)
-            setIsSticky(1);
-        else
-            setIsSticky(0);
+        setIsSticky(window.pageYOffset > stickyCardRef?.current?.offsetTop);
     }
     useEffect(() => {
         window.addEventListener('scroll', scollHandeler);

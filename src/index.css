@@ -48,7 +48,7 @@
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 60.5%;
 }
 * {
     margin: 0;
@@ -230,6 +230,35 @@ a {
     background-size: var(--width);
 }
 
+.mySwiper {
+    padding: 1.6rem !important;
+}
+
+.mySwiper .swiper-button-disabled {
+    display: none !important;
+}
+.mySwiper .swiper-button-next {
+    right: 0;
+}
+.mySwiper .swiper-button-prev {
+    left: 0;
+}
+
+.mySwiper .swiper-button-next,
+.mySwiper .swiper-button-prev {
+    top: 30%;
+    --size: 3rem;
+    width: var(--size);
+    height: var(--size);
+    background: black;
+    border-radius: 100%;
+    color: white;
+}
+.mySwiper .swiper-button-next:after,
+.mySwiper .swiper-button-prev:after {
+    font-size: 13px;
+    font-weight: bolder;
+}
 @media only screen and (min-width: 992px) {
     .myContainer {
         max-width: 960px !important;

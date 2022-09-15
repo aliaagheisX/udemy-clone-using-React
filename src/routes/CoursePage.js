@@ -1,9 +1,10 @@
 import React from 'react'
-import Waiting from '../Layouts/Waiting';
-import Error from '../Layouts/Error';
 import Course from '../components/Course/';
 import Resource from '../Resource';
 import { useLocation, useParams } from 'react-router-dom'
+
+const server = require('../config.json');
+
 
 function CoursePage() {
     const location = useLocation();
@@ -14,12 +15,8 @@ function CoursePage() {
 
     return (
         <Resource
-            path={`http://localhost:4000/data/${id}`}
-            render={data => {
-                if (data.loading) return <Waiting />
-                if (data.error) return <Error />
-                return <Course summary={summary} details={data.items} />
-            }}
+            path={`${server.course_data}${id}`}
+            render={data => <Course summary={summary} details={data.items} />}
         />
     );
 }

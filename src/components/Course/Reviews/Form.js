@@ -4,7 +4,7 @@ import styles from './styles/Form.module.css'
 import Searchbar from '../../Searchbar'
 import useNavigateSearch from '../../../useNavigateSearch';
 export default function Form() {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const navigate = useNavigateSearch();
     return (
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
