@@ -1,9 +1,6 @@
-import React from 'react'
+import React, { createContext } from 'react';
 import CourseHeader from './CourseHeader'
 import CourseNavbar from './CourseNavbar';
-import { DetailedRating } from '../utils/RatingDescription'
-
-import { createContext, useContext } from 'react';
 import Overview from './Overview';
 import CourseContent from './CourseContent/';
 import SideContainer from '../SideContainer';
@@ -11,22 +8,13 @@ import SideNav from './SideNav';
 import CourseDetails from './CourseDetails';
 import Instructors from './Instructor';
 import Reviews from './Reviews';
+import Pagination from '../../Pagination'
 
 export const SummaryContext = createContext();
 export const DetailsContext = createContext();
 
-
-export const RatingDetails = () => {
-    const summary = useContext(SummaryContext);
-    return (<DetailedRating
-        isBestSeller={summary.bestseller_badge_content}
-        num_subscribers={summary.num_subscribers}
-        rating={summary.rating}
-        num_reviews={summary.num_reviews}
-    />
-    )
-}
-const Course = ({ details, summary }) => {
+const server = require('../../config.json');
+const Course = ({ details, summary, reviews }) => {
     return (
         <SummaryContext.Provider value={summary}>
             <DetailsContext.Provider value={details}>
@@ -44,7 +32,13 @@ const Course = ({ details, summary }) => {
                         <CourseContent />
                         <CourseDetails />
                         <Instructors />
-                        <Reviews />
+
+                        <Pagination
+                            path={`${server.course_reviews}?courseId=${summary.id}`}
+                            limit={3}
+                            render={({ items, paginationData }) => <Reviews paginationData={paginationData} results={items} />}
+                        />
+
 
                     </SideContainer>
                 </div>

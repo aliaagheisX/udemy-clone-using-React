@@ -1,16 +1,15 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect } from 'react'
 import styles from './CustomCarsoul.module.css'
 import { useSwiper } from "swiper/react";
 import Spinner from 'react-bootstrap/Spinner';
-import { CoursesLoadingContext } from '../Category/CoursesContainer';
 
-export default function CarsoulNextBtn({ display }) {
-    const { nextLink, isLoading, loadNextCourses } = useContext(CoursesLoadingContext);
+export default function CarsoulNextBtn({ display, paginationData }) {
+    const { nextLink, isLoading, loadNextItems } = paginationData;
 
     const swiper = useSwiper();
     const clickHandeler = () => {
         if (nextLink)
-            loadNextCourses();
+            loadNextItems();
         else swiper.slideNext();
 
 

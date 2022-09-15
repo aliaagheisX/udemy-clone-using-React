@@ -1,6 +1,8 @@
 .res {
-    border-bottom: 1px solid #d1d7dc;
     padding: 2rem 0;
+}
+.res:not(:last-of-type) {
+    border-bottom: 1px solid #d1d7dc;
 }
 
 .cont {

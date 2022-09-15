@@ -1,13 +1,12 @@
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Result from './Result';
-import React, { useContext } from 'react';
-import { DetailsContext } from '..';
 import StudentFeedBack from './StudentFeedBack';
 import Form from './Form';
-import { useSearchParams } from 'react-router-dom';
-export default function Reviews() {
-    const { review: { results } } = useContext(DetailsContext);
-    const [searchParams] = useSearchParams();
+import ShowMore from './ShowMore';
 
+export default function Reviews({ results, paginationData }) {
+    const [searchParams] = useSearchParams();
 
     const filteredResults = () => (
         results
@@ -21,10 +20,10 @@ export default function Reviews() {
             .filter(({ rating }) => {
                 const filter = searchParams.get('rating');
                 if (!filter) return true;
-                return rating === filter;
-
+                return Math.floor(rating) == filter;
             })
     )
+
 
     return (
         <section id='reviews'>
@@ -33,13 +32,12 @@ export default function Reviews() {
             <div>
                 <h3>Reviews</h3>
                 <Form />
-                {
-                    filteredResults().map(({ id, ...data }) => (
-                        <div key={id}>
-                            <Result data={data} />
-                        </div>
-                    ))
-                }
+
+                {filteredResults().map(({ id, ...data }) => (
+                    <Result key={id} data={data} />
+                ))}
+
+                <ShowMore paginationData={paginationData} />
             </div>
 
         </section>

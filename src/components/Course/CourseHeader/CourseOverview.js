@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styles from './styles/CourseDetails.module.css'
 import { SummaryContext } from '..'
-import { RatingDetails } from '..';
+import RatingDetails from '../RatingDetails';
 import Instructors from './Instructors';
 import Updates from './Updates'
 

@@ -1,7 +1,7 @@
 .next,
 .before {
     position: absolute;
-    top: 30%;
+    top: 25%;
     --size: 3rem;
     width: var(--size);
     height: var(--size);

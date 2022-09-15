@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom';
-import styles from './styles/Form.module.css'
+import styles from './index.module.css'
 import Searchbar from '../../Searchbar'
 import useNavigateSearch from '../../../useNavigateSearch';
 export default function Form() {
@@ -10,6 +10,7 @@ export default function Form() {
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
 
             <Searchbar name='review' />
+
             <select
                 value={searchParams.get("rating") || ""}
                 onChange={(e) => {
@@ -26,6 +27,7 @@ export default function Form() {
                 <option value="2">Two stars</option>
                 <option value="1">One stars</option>
             </select>
+
         </form>
     )
 }

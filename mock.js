@@ -1,24 +1,23 @@
 const dp = require('./dp.json');
 const newData = {
-    data: dp.data,
+    data: [],
     summary: [],
+    reviews: [],
     category: []
 }
 
-dp.summary.forEach((cat) => {
-    const newCat = {
-        id: cat.id,
-        title: cat.title,
-        header: cat.header,
-        description: cat.description
-    }
+newData.category = dp.category;
+newData.summary = dp.summary;
 
-    cat.items.forEach(course => {
-        course.categoryId = cat.id;
+dp.data.forEach((course) => {
+    course.id = parseInt(course.id);
+    course.review.results.forEach((res) => {
+        res.courseId = course.id;
+        newData.reviews.push(res);
     })
 
-    newData.category.push(newCat);
-    newData.summary.push(...cat.items);
+    delete course.review.results;
+    newData.data.push(course);
 })
 
 const fs = require("fs");

@@ -10,12 +10,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import CarsoulPrevBtn from './CarsoulPrevBtn';
 import CarsoulNextBtn from './CarsoulNextBtn';
-import { CoursesLoadingContext } from '../Category/CoursesContainer';
-import { useContext } from 'react';
 
 
-export default function CustomCarsoul({ items }) {
-    const { nextLink } = useContext(CoursesLoadingContext);
+export default function CustomCarsoul({ items, paginationData }) {
+
+    const { nextLink } = paginationData;
     const [displayNext, setDisplayNext] = useState(nextLink);
     const [displayPrev, setDisplayPrev] = useState(0);
 
@@ -54,7 +53,7 @@ export default function CustomCarsoul({ items }) {
             onSlideChange={handelDisplayButtons}
             className='mySwiper'
         >
-            <CarsoulNextBtn display={displayNext} />
+            <CarsoulNextBtn display={displayNext} paginationData={paginationData} />
             <CarsoulPrevBtn display={displayPrev} />
 
             {items.map((e, i) => (
