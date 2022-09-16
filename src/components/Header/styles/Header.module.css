@@ -1,0 +1,21 @@
+.headerContainer {
+    background-color: var(--light-grey);
+    padding: 5rem 1rem;
+    flex-wrap: wrap-reverse;
+    flex-direction: row;
+    align-items: flex-end;
+    max-width: 114rem !important;
+}
+
+.headerImg {
+    align-content: center;
+    width: 20vw;
+    min-width: 300px;
+}
+
+.headerContainer div {
+    padding: 2rem 15px;
+    width: 100vw;
+    max-width: 44rem;
+    text-align: start;
+}

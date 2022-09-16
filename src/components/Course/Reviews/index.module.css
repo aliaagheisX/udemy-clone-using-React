@@ -1,0 +1,25 @@
+.form {
+    display: flex;
+    gap: 1.6rem;
+    margin: 2rem 0;
+}
+.form input {
+    padding: 0.5rem;
+    border: 2px solid var(--dark-grey);
+    font-size: var(--medium-font);
+    flex-grow: 1;
+    font-size: var(--large-font);
+}
+.form select {
+    padding: 1rem;
+    font-size: var(--small-font);
+}
+.btn {
+    width: 100%;
+    color: #1c1d1f;
+    height: 4rem;
+    padding: 0 1.2rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: 1px solid;
+}

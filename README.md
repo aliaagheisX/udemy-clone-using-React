@@ -1,2 +1,13 @@
-# udemy-clone-using-React
-Udemy Landing page Clone using react
+# Getting Started with Create React App
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `json-server --watch dp.json --port 4000`
+
+Launches server for api

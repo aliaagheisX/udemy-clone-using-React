@@ -1,0 +1,32 @@
+.container,
+.ins {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+.cont {
+    display: flex;
+    align-items: center;
+}
+
+.cont img {
+    border-radius: 100%;
+}
+
+.title {
+    color: var(--light-purple);
+    font-size: var(--xlarge-font);
+    font-weight: bolder;
+    display: block;
+    text-decoration: underline;
+}
+
+.jop {
+    color: var(--grey);
+    font-size: var(--large-font);
+    display: block;
+}
+
+.desc {
+    font-size: var(--medium-font);
+}

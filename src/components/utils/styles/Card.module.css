@@ -1,0 +1,51 @@
+.hoverCard {
+    position: relative;
+}
+
+.cardHoverContainer {
+    width: 25rem;
+    position: absolute;
+    top: 6.7rem;
+    right: 0;
+    display: none;
+    z-index: 1080;
+}
+
+.cardContent {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 0.7rem;
+}
+
+.hoverCard:hover .cardHoverContainer,
+.cardHoverContainer:hover {
+    display: block;
+}
+
+/* hover nav */
+
+.hoverNav .cardHoverContainer {
+    left: 0;
+}
+
+.hoverNav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.2rem 0.7rem;
+}
+
+.hoverNav li::after {
+    content: "";
+    border: solid var(--dark-grey);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 2px;
+    transform: rotate(-45deg);
+    position: absolute;
+    right: 2.4rem;
+    cursor: pointer;
+}
+
+.hoverNav li:hover::after {
+    border-color: var(--purple);
+}

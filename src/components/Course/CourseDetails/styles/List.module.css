@@ -1,0 +1,24 @@
+.List ul {
+    flex-direction: column;
+    list-style: circle;
+    list-style-type: circle;
+    align-items: start;
+    gap: 0.6rem;
+    padding: 1rem 0;
+    font-size: var(--small-font);
+}
+
+.List ul li {
+    position: relative;
+    padding-left: 15px;
+}
+.List ul li::before {
+    content: "";
+    --size: 5px;
+    width: var(--size);
+    height: var(--size);
+    background-color: black;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+}

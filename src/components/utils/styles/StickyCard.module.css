@@ -1,0 +1,6 @@
+.stickyCard {
+    /* TODO */
+    width: var(--side);
+    padding: 2rem;
+    z-index: 2000;
+}

@@ -1,0 +1,7 @@
+{
+    "url": "http://localhost:4000/",
+    "course_data": "http://localhost:4000/data/",
+    "course_summary": "http://localhost:4000/summary",
+    "categories": "http://localhost:4000/category",
+    "course_reviews": "http://localhost:4000/reviews/"
+}

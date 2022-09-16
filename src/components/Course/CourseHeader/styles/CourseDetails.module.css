@@ -1,0 +1,23 @@
+.head {
+    max-width: 66rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--medium-gap);
+    padding-top: var(--medium-gap);
+}
+
+.details {
+    display: flex;
+    gap: 0.7rem;
+    flex-direction: column;
+}
+
+.head h1 {
+    font-family: Udemy;
+    font-weight: var(--bold-weight);
+    letter-spacing: -0.02rem;
+    padding: 0.2rem 0;
+}
+.head p {
+    font-size: 1.9rem;
+}

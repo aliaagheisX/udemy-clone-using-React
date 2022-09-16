@@ -1,0 +1,44 @@
+.cont {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.circle {
+    background-color: var(--dark-grey);
+    color: white;
+    font-size: var(--large-font);
+    font-weight: bold;
+    display: inline-block;
+    --size: 4rem;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 100%;
+    line-height: var(--size);
+    text-align: center;
+}
+
+.name {
+    color: var(--dark-grey);
+    font-size: var(--large-font);
+    font-weight: bold;
+}
+.ratingCont {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.ratingCont {
+    display: flex;
+    align-items: center;
+}
+
+.ratingCont > div > * {
+    font-size: 1.8rem;
+}
+
+.comment {
+    color: var(--grey);
+    font-size: var(--medium-font);
+}
